@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet weak var numDisplay: UITextField!
+    
     @IBAction func numInput(_ sender: UIButton) {
     }
 
