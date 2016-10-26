@@ -23,5 +23,7 @@ class ViewController: UIViewController {
     @IBAction func numInput(_ sender: UIButton) {
     }
 
+    @IBAction func operationInput(_ sender: UIButton) {
+    }
 }
 
