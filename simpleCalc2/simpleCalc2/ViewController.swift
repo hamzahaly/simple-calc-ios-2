@@ -15,9 +15,11 @@ class ViewController: UIViewController {
     var didPress = true
     var results = Double()
     var numArray = [Double]()
-    
+    var equals = String()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        operation = "="
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -69,12 +71,12 @@ class ViewController: UIViewController {
             didPress = false
         case "Fact":
             print("factorial")
-            var fact = number
-            var operand = number - 1
-            if number == 0 {
+            var fact = results
+            var operand = results - 1
+            if results == 0 {
                 results = 1
             } else {
-                for _ in 1...Int(number) - 1 {
+                for _ in 1...Int(results) - 1 {
                     fact = fact * operand
                     print(fact)
                     operand -= 1
@@ -114,10 +116,9 @@ class ViewController: UIViewController {
         default:
             print("error")
         }
+        operation = sender.titleLabel!.text!
         number = 0
         numDisplay.text = ("\(results)")
-        
-        operation = sender.titleLabel!.text!
     }
 }
 
