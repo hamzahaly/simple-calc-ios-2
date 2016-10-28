@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     @IBAction func numInput(_ sender: UIButton) {
         number = number * 10 + Double(sender.titleLabel!.text!)!
         numDisplay.text = ("\(Int(number))")
+        didPress = true
     }
 
     @IBAction func operationInput(_ sender: UIButton) {
