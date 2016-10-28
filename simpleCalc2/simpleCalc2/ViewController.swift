@@ -30,6 +30,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var numDisplay: UITextField!
     
+    @IBAction func historyBtn(_ sender: UIButton) {
+            performSegue(withIdentifier: "HistorySegue", sender: nil)
+        
+    }
+    
     @IBAction func numInput(_ sender: UIButton) {
         number = number * 10 + Double(sender.titleLabel!.text!)!
         numDisplay.text = ("\(Int(number))")
