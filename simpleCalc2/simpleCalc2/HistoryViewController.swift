@@ -9,10 +9,13 @@
 import UIKit
 
 class HistoryViewController: UIViewController {
+    
+    @IBOutlet weak var historyLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        historyLabel.text = "hello"
+        
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +24,10 @@ class HistoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func backBtn(_ sender: UIButton) {
+        performSegue(withIdentifier: "CalcSegue", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

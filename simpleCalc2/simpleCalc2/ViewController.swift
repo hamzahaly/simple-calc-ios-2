@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     var results = Double()
     var numArray = [Double]()
     var equals = String()
+    var history = [String]()
+    var expression: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,17 +44,21 @@ class ViewController: UIViewController {
     }
 
     @IBAction func operationInput(_ sender: UIButton) {
+        let op = sender.titleLabel!.text!
+        expression += ("\(op)")
+
         switch operation {
         case "=":
             print("equals")
-            print(number)
-            print(results)
             if (didPress == true) {
                 print("appending")
                 numArray.append(number)
             }
             results = number
             didPress = false
+            if expression != "" {
+                
+            }
         case "+":
             print("adding")
             results = results + number
@@ -126,5 +132,16 @@ class ViewController: UIViewController {
         number = 0
         numDisplay.text = ("\(results)")
     }
+    
+    func createHistory() {
+        history.append(expression)
+        print(history)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let guest = segue.destination as! HistoryViewController
+        guest.historyLabel = sender as! UILabel
+    }
+    
 }
 
