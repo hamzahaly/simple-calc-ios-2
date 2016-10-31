@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     
     @IBAction func historyBtn(_ sender: UIButton) {
             performSegue(withIdentifier: "HistorySegue", sender: nil)
-        
     }
     
     @IBAction func numInput(_ sender: UIButton) {
@@ -60,28 +59,33 @@ class ViewController: UIViewController {
             print("adding")
             results = results + number
             didPress = false
+            num2 = number
             expression = "\(num1) \(operation) \(num2) = \(results)"
             history.append(expression)
         case "-":
             print("subtracting")
             results = results - number
             didPress = false
+            num2 = number
             expression = "\(num1) \(operation) \(num2) = \(results)"
             history.append(expression)
         case "*":
             print("multiplying")
             results = results * number
             didPress = false
+            num2 = number
             expression = "\(num1) \(operation) \(num2) = \(results)"
             history.append(expression)
         case "/":
             print("dividing")
             results = results / number
             didPress = false
+            num2 = number
             expression = "\(num1) \(operation) \(num2) = \(results)"
             history.append(expression)
         case "%":
             print("modding")
+            num2 = number
             var final: Int
             final = Int(results) % Int(number)
             results = Double(final)
@@ -90,6 +94,7 @@ class ViewController: UIViewController {
             history.append(expression)
         case "Fact":
             print("factorial")
+            num2 = number
             var fact = results
             var operand = results - 1
             if results == 0 {
@@ -137,7 +142,6 @@ class ViewController: UIViewController {
         default:
             print("error")
         }
-        num2 = number
         operation = sender.titleLabel!.text!
         number = 0
         numDisplay.text = ("\(results)")
@@ -145,8 +149,8 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let guest = segue.destination as! HistoryViewController
-        guest.historyLabel = sender as! UILabel
+        let historyVC = segue.destination as! HistoryViewController
+        historyVC.history = history
     }
     
 }

@@ -10,12 +10,17 @@ import UIKit
 
 class HistoryViewController: UIViewController {
     
-    @IBOutlet weak var historyLabel: UILabel!
+    var history = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        historyLabel.text = "hello"
-        
+        print(history)
+        for element in history {
+            let label = UILabel(frame: CGRect(x: 0, y: 75 + history.index(of: element)! * 30, width: 200, height: 21))
+            label.textAlignment = .center
+            label.text = element
+            self.view.addSubview(label)
+        }
         // Do any additional setup after loading the view.
     }
 
