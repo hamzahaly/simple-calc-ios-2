@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     var number = Double()
+    var num1 = Double()
+    var num2 = Double()
     var operation = String()
     var didPress = true
     var results = Double()
@@ -44,9 +46,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func operationInput(_ sender: UIButton) {
-        let op = sender.titleLabel!.text!
-        expression += ("\(op)")
-
         switch operation {
         case "=":
             print("equals")
@@ -54,33 +53,41 @@ class ViewController: UIViewController {
                 print("appending")
                 numArray.append(number)
             }
+            num1 = number
             results = number
             didPress = false
-            if expression != "" {
-                
-            }
         case "+":
             print("adding")
             results = results + number
             didPress = false
+            expression = "\(num1) \(operation) \(num2) = \(results)"
+            history.append(expression)
         case "-":
             print("subtracting")
             results = results - number
             didPress = false
+            expression = "\(num1) \(operation) \(num2) = \(results)"
+            history.append(expression)
         case "*":
             print("multiplying")
             results = results * number
             didPress = false
+            expression = "\(num1) \(operation) \(num2) = \(results)"
+            history.append(expression)
         case "/":
             print("dividing")
             results = results / number
             didPress = false
+            expression = "\(num1) \(operation) \(num2) = \(results)"
+            history.append(expression)
         case "%":
             print("modding")
             var final: Int
             final = Int(results) % Int(number)
             results = Double(final)
             didPress = false
+            expression = "\(num1) \(operation) \(num2) = \(results)"
+            history.append(expression)
         case "Fact":
             print("factorial")
             var fact = results
@@ -96,6 +103,8 @@ class ViewController: UIViewController {
                 }
             }
             numDisplay.text = ("\(results)")
+            expression = "\(num1) \(operation) = \(results)"
+            history.append(expression)
         case "Count":
             print("count")
             if (didPress == true) {
@@ -128,13 +137,10 @@ class ViewController: UIViewController {
         default:
             print("error")
         }
+        num2 = number
         operation = sender.titleLabel!.text!
         number = 0
         numDisplay.text = ("\(results)")
-    }
-    
-    func createHistory() {
-        history.append(expression)
         print(history)
     }
     
